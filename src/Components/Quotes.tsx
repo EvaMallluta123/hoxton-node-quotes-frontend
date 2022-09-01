@@ -6,7 +6,7 @@ export function Quotes({quotes}){
         <h1>My favorite quotes</h1>
       
         {quotes.map(quote => (
-       <Link to={`/home/${quotes.id}`}>
+       <Link to={`/home/${quote.id}`}>
          <div className='quotes'>
          <p>{quote.quote}</p>
          <h3>{quote.name}</h3>

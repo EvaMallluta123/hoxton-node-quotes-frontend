@@ -4,7 +4,7 @@ import './App.css'
 import { Quotes } from './Components/Quotes'
 import { QuotesDetails } from './Components/QuotesDetails'
 
-  export type Quotes={
+  export type Quote={
   id: number,
   name: string,
   quote:string,
@@ -13,7 +13,7 @@ import { QuotesDetails } from './Components/QuotesDetails'
 }
 
 function App() {
-  const[quotes,setQuote]=useState<Quotes[]>([])
+  const[quotes,setQuote]=useState<Quote[]>([])
 useEffect(()=>{
 fetch("http://localhost:4000/home")
 .then(resp=>resp.json())
