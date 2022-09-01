@@ -17,7 +17,7 @@ function App() {
 useEffect(()=>{
 fetch("http://localhost:4000/home")
 .then(resp=>resp.json())
-.then(quoteFromServer=>setQuote(quoteFromServer))
+.then(quotesFromServer=>setQuote(quotesFromServer))
 },[])
   return (
     <div className="App">
