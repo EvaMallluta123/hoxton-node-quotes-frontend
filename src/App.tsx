@@ -1,21 +1,35 @@
 import { useEffect, useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import { Quotes } from './Components/Quotes'
+import { QuotesDetails } from './Components/QuotesDetails'
+
+  export type Quotes={
+  id: number,
+  name: string,
+  quote:string,
+  age:number;
+  image:string
+}
 
 function App() {
-  const[quotes,setQuote]=useState([])
+  const[quotes,setQuote]=useState<Quotes[]>([])
 useEffect(()=>{
-fetch("http://localhost:4000/")
+fetch("http://localhost:4000/home")
 .then(resp=>resp.json())
 .then(quoteFromServer=>setQuote(quoteFromServer))
 },[])
   return (
     <div className="App">
-     {quotes.map(quote => (
-      <div>
-      <p>{quote.quote}</p>
-      <h1>{quote.name}</h1>
-      </div>
-      ))}
+      <>
+      <main>
+        <Routes>
+
+      <Route path="/home" element={<Quotes quotes={quotes}/>}/>
+      <Route path="/home/:id" element={<QuotesDetails />}/>
+      </Routes>
+      </main>
+      </>
     </div>
   )
 }
